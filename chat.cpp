@@ -1042,10 +1042,10 @@ int main(int argc, char ** argv) {
                 bool another_line=true;
                 while (another_line) {
                     fflush(stdout);
-                    char buf[256] = {0}; //16384 - for extended length
+                    char buf[16384] = {0}; //16384 - for extended length
                     int n_read;
                     if(params.use_color) printf(ANSI_BOLD ANSI_COLOR_GREEN);
-                    if (scanf("%255[^\n]%n%*c", buf, &n_read) <= 0) { //16383 - for extended length
+                    if (scanf("%16383[^\n]%n%*c", buf, &n_read) <= 0) { //16383 - for extended length
                         // presumable empty line, consume the newline
                         if (scanf("%*c") <= 0) { /*ignore*/ }
                         n_read=0;
